@@ -1,0 +1,145 @@
+/* Hero A */
+//CSS
+
+position: absolute;
+width: 1680px;
+height: 960px;
+left: 80px;
+top: 80px;
+
+background: #FFFFFF;
+
+/* Content */
+
+
+position: absolute;
+width: 840px;
+height: 960px;
+left: 840px;
+top: 0px;
+/* Hero C */
+
+
+position: absolute;
+width: 1680px;
+height: 960px;
+left: 80px;
+top: 2080px;
+
+background: #FFFFFF;
+position: absolute;
+width: 1288px;
+height: 678px;
+left: 240px;
+top: 51px;
+
+background: url(maxresdefault.jpg);
+/* Hero E */
+
+
+position: absolute;
+width: 1680px;
+height: 960px;
+left: 0px;
+top: 60px;
+
+background: #FFFFFF;
+
+/* Body B */
+
+
+position: absolute;
+width: 1680px;
+height: 948px;
+left: 0px;
+top: 1020px;
+
+//text inputs
+position: absolute;
+width: 686px;
+height: 90px;
+left: 80px;
+top: 273px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: -0.015em;
+
+color: rgba(0, 0, 0, 0.8);
+
+//info buttons
+/* Rectangle 2 */
+
+
+position: absolute;
+width: 130px;
+height: 40px;
+left: 926px;
+top: 399px;
+
+
+//mporting for flutter prerecs
+////  Imports for platform info ////
+import 'package:flutter/foundation.dart' show defaultTargetPlatform;
+import 'package:flutter/foundation.dart' show TargetPlatform;
+
+////  Imports for App Center ////
+import 'package:appcenter/appcenter.dart';
+import 'package:appcenter_analytics/appcenter_analytics.dart';
+import 'package:appcenter_crashes/appcenter_crashes.dart';
+
+//using the app id *important*
+
+class _MyHomePageState extends State<MyHomePage> {
+  ////  Identifier used for initialising App Center ////
+  String _appCenterIdentifier = defaultTargetPlatform == TargetPlatform.iOS
+      ? "3037d80f-XXXXXXXXXXX-adb968c67880"
+      : "f6737675-XXXXXXXXXXX-be38b29b0f89";
+      
+      
+      ////  Override Initialise State ////
+@override
+void initState() {
+  super.initState();
+  initAppCenter();
+}
+
+////  Initialise AppCenter ////
+void initAppCenter() async {
+// Initialise AppCenter to allow for event tracking and crash reporting
+  await AppCenter.start(
+      _appCenterIdentifier, [AppCenterAnalytics.id, AppCenterCrashes.id]);
+}
+
+/API Inputs
+
+[Route("api/[controller]")]
+[ApiController]
+public class TasksController : ControllerBase
+{
+    // GET api/values
+    [HttpGet]
+    public ActionResult<IEnumerable<Task>> Get()
+    {
+        return new[]
+        {
+            new Task {Title = "Task 1", Completed = true, },
+            new Task {Title = "Task 2", Completed = false,},
+            new Task {Title = "Task 3", Completed = true, },
+            new Task {Title = "Task 4", Completed = false,},
+            new Task {Title = "Task 5", Completed = true, },
+        };
+    }
+}
+
+public class Task
+{
+    public string Title { get; set; }
+    public bool Completed { get; set; }
+}
